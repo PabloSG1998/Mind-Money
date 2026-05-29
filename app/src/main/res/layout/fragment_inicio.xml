@@ -150,6 +150,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
+
         <!--Resumen tareas, muestra las últimas 3 tareas-->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardResumenTareas"
