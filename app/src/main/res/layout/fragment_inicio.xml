@@ -171,7 +171,6 @@
                 android:layout_height="wrap_content"
                 android:background="#0F172A"
                 android:padding="16dp">
-
                 <TextView
                     android:id="@+id/textResumen"
                     android:layout_width="wrap_content"

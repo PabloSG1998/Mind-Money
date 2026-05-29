@@ -12,6 +12,7 @@
         android:background="#0A0E1A"
         android:paddingBottom="100dp"
         tools:context=".ui.finanzas.FinanzasFragment">
+
         <!--Título-->
         <TextView
             android:id="@+id/textTituloFinanzas"
