@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardBackgroundColor="#0F172A"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#0F172A"
+        android:padding="20dp">
+
+        <!--Título-->
+        <TextView
+            android:id="@+id/textTituloDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nuevo Ingreso"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--Título campo-->
+        <TextView
+            android:id="@+id/textTituloCampo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Título"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textTituloDialog" />
+
+        <!--Input título-->
+        <EditText
+            android:id="@+id/editTitulo"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#3E4C60"
+            android:ems="10"
+            android:hint="Ej: Café universidad"
+            android:maxLength="30"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#9CA3AF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textTituloCampo" />
+
+        <!--Cantidad-->
+        <TextView
+            android:id="@+id/textCantidadCampo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Cantidad"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTitulo" />
+
+        <!--Input cantidad-->
+        <EditText
+            android:id="@+id/editCantidad"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#3E4C60"
+            android:hint="0"
+            android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#9CA3AF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textCantidadCampo" />
+
+        <!--Categoría-->
+        <TextView
+            android:id="@+id/textCategoria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Categoría"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editCantidad" />
+
+        <!--Fila 1-->
+        <LinearLayout
+            android:id="@+id/filaIconos1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textCategoria">
+
+            <Button
+                android:id="@+id/iconCafe"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:backgroundTint="#3E4C60"
+                android:text="☕"
+                android:textSize="16sp" />
+            <Button
+                android:id="@+id/iconTransporte"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginHorizontal="16dp"
+                android:backgroundTint="#3E4C60"
+                android:text="🚗"
+                android:textSize="16sp" />
+            <Button
+                android:id="@+id/iconHogar"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:backgroundTint="#3E4C60"
+                android:text="🏠"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <!--Fila 2-->
+        <LinearLayout
+            android:id="@+id/filaIconos2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filaIconos1">
+
+            <Button
+                android:id="@+id/iconInversion"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:backgroundTint="#3E4C60"
+                android:text="📈"
+                android:textSize="16sp" />
+            <Button
+                android:id="@+id/iconServicios"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginHorizontal="16dp"
+                android:backgroundTint="#3E4C60"
+                android:text="💡"
+                android:textSize="16sp" />
+            <Button
+                android:id="@+id/iconOtros"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:backgroundTint="#3E4C60"
+                android:text="📦"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+        <!--Botón cancelar-->
+        <Button
+            android:id="@+id/buttonCancelarIngreso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#3E4C60"
+            android:text="Cancelar"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filaIconos2" />
+        <!--Botón guardar-->
+        <Button
+            android:id="@+id/buttonGuardarIngreso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#3E4C60"
+            android:text="Guardar"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@id/buttonCancelarIngreso"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
