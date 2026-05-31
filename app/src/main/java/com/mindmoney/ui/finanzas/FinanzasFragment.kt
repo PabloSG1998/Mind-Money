@@ -9,6 +9,7 @@ import android.app.AlertDialog
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import android.widget.TextView
 import com.mindmoney.Transaccion
 
 // TODO: Rename parameter arguments, choose names that match
@@ -46,6 +47,20 @@ class FinanzasFragment : Fragment() {
             container,
             false
         )
+        val textSaldo =
+            vista.findViewById<TextView>(R.id.textSaldoFinanzas)
+        val textIngresos =
+            vista.findViewById<TextView>(R.id.textIngresos)
+        val textGastos =
+            vista.findViewById<TextView>(R.id.textGastos)
+        val tituloTransaccion1 =
+            vista.findViewById<TextView>(R.id.tituloTransaccion1)
+        val fechaTransaccion1 =
+            vista.findViewById<TextView>(R.id.fechaTransaccion1)
+        val montoTransaccion1 =
+            vista.findViewById<TextView>(R.id.montoTransaccion1)
+        val iconoTransaccion1 =
+            vista.findViewById<TextView>(R.id.iconoTransaccion1)
         val cardIngresos = vista.findViewById<androidx.cardview.widget.CardView>(R.id.cardIngresos)
         cardIngresos.setOnClickListener {
             val dialogView = LayoutInflater.from(requireContext())
@@ -91,6 +106,19 @@ class FinanzasFragment : Fragment() {
 
                 listaTransacciones.add(0, nuevaTransaccion)
                 totalIngresos += cantidad
+                textIngresos.text = "+$${totalIngresos}"
+
+                val saldoActual = totalIngresos - totalGastos
+
+                textSaldo.text = "$$saldoActual"
+                tituloTransaccion1.text = titulo
+                fechaTransaccion1.text = "Hoy"
+                montoTransaccion1.text = "+$${cantidad}"
+                montoTransaccion1.setTextColor(
+                    android.graphics.Color.parseColor("#00C84F")
+                )
+
+                iconoTransaccion1.text = "📈"
                 Toast.makeText(
                     requireContext(),
                     "Ingreso guardado",
