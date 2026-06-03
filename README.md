@@ -23,5 +23,7 @@ La aplicación se desarrollará exclusivamente para la plataforma Android. Se ut
 *   **Encontrará el diseño en Figma:**
 *   https://www.figma.com/make/cFDsH1kjACdw23WerINiUI/Dise%C3%B1o-de-panel-Dashboard?t=DO5A43pzG0fiFvq8-1
 
-## Changeload
-*   dfdf
+## Registro de Cambios (Changeload)
+*   Se agregó una pantalla para ingresar los "Ingresos" y "Gastos" para hacer más ágil e intuitiva la actividad de registrar movimientos monetarios.
+*   Se agregó la pantalla de "Inicio de Sesión" con el objetivo principal de entrar a un apartado de admin e ingresar el mensaje para el usuario.
+*   Se implementará la pantalla de admin para sus diversas actividades.
