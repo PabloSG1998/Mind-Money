@@ -22,3 +22,6 @@ La aplicación se desarrollará exclusivamente para la plataforma Android. Se ut
 ## Diseño (Wireframes)
 *   **Encontrará el diseño en Figma:**
 *   https://www.figma.com/make/cFDsH1kjACdw23WerINiUI/Dise%C3%B1o-de-panel-Dashboard?t=DO5A43pzG0fiFvq8-1
+
+## Changeload
+*   dfdf
