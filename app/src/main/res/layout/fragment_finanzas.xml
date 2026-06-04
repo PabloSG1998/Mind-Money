@@ -115,15 +115,15 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-                <!--Editar-->
+                <!--Reiniciar-->
                 <Button
                     android:id="@+id/buttonEditar"
-                    android:layout_width="80dp"
-                    android:layout_height="48dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="18dp"
                     android:backgroundTint="#1E293B"
-                    android:text="Editar"
+                    android:text="Reiniciar"
                     android:textColor="#FFFFFF"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -266,7 +266,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardTransaccionesRecientes"
             android:layout_width="0dp"
-            android:layout_height="140dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="22dp"
             android:layout_marginEnd="16dp"
@@ -279,8 +279,9 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#0F172A">
+                android:layout_height="wrap_content"
+                android:background="#0F172A"
+                android:paddingBottom="8dp">
 
                 <TextView
                     android:id="@+id/textTransacciones"
@@ -288,14 +289,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
                     android:fontFamily="sans-serif-thin"
+                    android:paddingBottom="16dp"
                     android:text="Transacciones Recientes"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/cardTransaccion1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-                <!--Transacción ejemplo-->
+
+                <!--Transacciones-->
+                <!--1-->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardTransaccion1"
                     android:layout_width="0dp"
@@ -306,7 +312,6 @@
                     app:cardBackgroundColor="#1E293B"
                     app:cardCornerRadius="15dp"
                     app:cardElevation="16dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textTransacciones">
@@ -316,7 +321,6 @@
                         android:layout_height="match_parent"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp">
-
                         <!--icono-->
                         <TextView
                             android:id="@+id/iconoTransaccion1"
@@ -331,7 +335,6 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
                         <!--título-->
                         <TextView
                             android:id="@+id/tituloTransaccion1"
@@ -344,7 +347,6 @@
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@id/iconoTransaccion1"
                             app:layout_constraintTop_toTopOf="@id/iconoTransaccion1" />
-
                         <!--fecha-->
                         <TextView
                             android:id="@+id/fechaTransaccion1"
@@ -355,7 +357,6 @@
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="@id/tituloTransaccion1"
                             app:layout_constraintTop_toBottomOf="@id/tituloTransaccion1" />
-
                         <!--monto-->
                         <TextView
                             android:id="@+id/montoTransaccion1"
@@ -369,9 +370,657 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
 
+                <!--2-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTransaccion2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="#1E293B"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardTransaccion1">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp">
+                        <!--icono-->
+                        <TextView
+                            android:id="@+id/iconoTransaccion2"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@drawable/circulo_icono"
+                            android:gravity="center"
+                            android:text="☕"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <!--título-->
+                        <TextView
+                            android:id="@+id/tituloTransaccion2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Sin movimientos"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/iconoTransaccion2"
+                            app:layout_constraintTop_toTopOf="@id/iconoTransaccion2" />
+                        <!--fecha-->
+                        <TextView
+                            android:id="@+id/fechaTransaccion2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--/--/----"
+                            android:textColor="#9CA3AF"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@id/tituloTransaccion2"
+                            app:layout_constraintTop_toBottomOf="@id/tituloTransaccion2" />
+                        <!--monto-->
+                        <TextView
+                            android:id="@+id/montoTransaccion2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="$0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!--3-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTransaccion3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="#1E293B"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardTransaccion2">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp">
+                        <!--icono-->
+                        <TextView
+                            android:id="@+id/iconoTransaccion3"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@drawable/circulo_icono"
+                            android:gravity="center"
+                            android:text="☕"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <!--título-->
+                        <TextView
+                            android:id="@+id/tituloTransaccion3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Sin movimientos"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/iconoTransaccion3"
+                            app:layout_constraintTop_toTopOf="@id/iconoTransaccion3" />
+                        <!--fecha-->
+                        <TextView
+                            android:id="@+id/fechaTransaccion3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--/--/----"
+                            android:textColor="#9CA3AF"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@id/tituloTransaccion3"
+                            app:layout_constraintTop_toBottomOf="@id/tituloTransaccion3" />
+                        <!--monto-->
+                        <TextView
+                            android:id="@+id/montoTransaccion3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="$0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!--4-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTransaccion4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="#1E293B"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardTransaccion3">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp">
+                        <!--icono-->
+                        <TextView
+                            android:id="@+id/iconoTransaccion4"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@drawable/circulo_icono"
+                            android:gravity="center"
+                            android:text="☕"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <!--título-->
+                        <TextView
+                            android:id="@+id/tituloTransaccion4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Sin movimientos"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/iconoTransaccion4"
+                            app:layout_constraintTop_toTopOf="@id/iconoTransaccion4" />
+                        <!--fecha-->
+                        <TextView
+                            android:id="@+id/fechaTransaccion4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--/--/----"
+                            android:textColor="#9CA3AF"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@id/tituloTransaccion4"
+                            app:layout_constraintTop_toBottomOf="@id/tituloTransaccion4" />
+                        <!--monto-->
+                        <TextView
+                            android:id="@+id/montoTransaccion4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="$0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!--5-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTransaccion5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="#1E293B"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardTransaccion4">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp">
+                        <!--icono-->
+                        <TextView
+                            android:id="@+id/iconoTransaccion5"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@drawable/circulo_icono"
+                            android:gravity="center"
+                            android:text="☕"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <!--título-->
+                        <TextView
+                            android:id="@+id/tituloTransaccion5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Sin movimientos"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/iconoTransaccion5"
+                            app:layout_constraintTop_toTopOf="@id/iconoTransaccion5" />
+                        <!--fecha-->
+                        <TextView
+                            android:id="@+id/fechaTransaccion5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--/--/----"
+                            android:textColor="#9CA3AF"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@id/tituloTransaccion5"
+                            app:layout_constraintTop_toBottomOf="@id/tituloTransaccion5" />
+                        <!--monto-->
+                        <TextView
+                            android:id="@+id/montoTransaccion5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="$0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!--6-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTransaccion6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="#1E293B"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardTransaccion5">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp">
+                        <!--icono-->
+                        <TextView
+                            android:id="@+id/iconoTransaccion6"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@drawable/circulo_icono"
+                            android:gravity="center"
+                            android:text="☕"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <!--título-->
+                        <TextView
+                            android:id="@+id/tituloTransaccion6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Sin movimientos"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/iconoTransaccion6"
+                            app:layout_constraintTop_toTopOf="@id/iconoTransaccion6" />
+                        <!--fecha-->
+                        <TextView
+                            android:id="@+id/fechaTransaccion6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--/--/----"
+                            android:textColor="#9CA3AF"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@id/tituloTransaccion6"
+                            app:layout_constraintTop_toBottomOf="@id/tituloTransaccion6" />
+                        <!--monto-->
+                        <TextView
+                            android:id="@+id/montoTransaccion6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="$0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!--7-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTransaccion7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="#1E293B"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardTransaccion6">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp">
+                        <!--icono-->
+                        <TextView
+                            android:id="@+id/iconoTransaccion7"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@drawable/circulo_icono"
+                            android:gravity="center"
+                            android:text="☕"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <!--título-->
+                        <TextView
+                            android:id="@+id/tituloTransaccion7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Sin movimientos"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/iconoTransaccion7"
+                            app:layout_constraintTop_toTopOf="@id/iconoTransaccion7" />
+                        <!--fecha-->
+                        <TextView
+                            android:id="@+id/fechaTransaccion7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--/--/----"
+                            android:textColor="#9CA3AF"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@id/tituloTransaccion7"
+                            app:layout_constraintTop_toBottomOf="@id/tituloTransaccion7" />
+                        <!--monto-->
+                        <TextView
+                            android:id="@+id/montoTransaccion7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="$0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!--8-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTransaccion8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="#1E293B"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardTransaccion7">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp">
+                        <!--icono-->
+                        <TextView
+                            android:id="@+id/iconoTransaccion8"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@drawable/circulo_icono"
+                            android:gravity="center"
+                            android:text="☕"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <!--título-->
+                        <TextView
+                            android:id="@+id/tituloTransaccion8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Sin movimientos"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/iconoTransaccion8"
+                            app:layout_constraintTop_toTopOf="@id/iconoTransaccion8" />
+                        <!--fecha-->
+                        <TextView
+                            android:id="@+id/fechaTransaccion8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--/--/----"
+                            android:textColor="#9CA3AF"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@id/tituloTransaccion8"
+                            app:layout_constraintTop_toBottomOf="@id/tituloTransaccion8" />
+                        <!--monto-->
+                        <TextView
+                            android:id="@+id/montoTransaccion8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="$0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!--9-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTransaccion9"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardBackgroundColor="#1E293B"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardTransaccion8">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp">
+                        <!--icono-->
+                        <TextView
+                            android:id="@+id/iconoTransaccion9"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@drawable/circulo_icono"
+                            android:gravity="center"
+                            android:text="☕"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <!--título-->
+                        <TextView
+                            android:id="@+id/tituloTransaccion9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Sin movimientos"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/iconoTransaccion9"
+                            app:layout_constraintTop_toTopOf="@id/iconoTransaccion9" />
+                        <!--fecha-->
+                        <TextView
+                            android:id="@+id/fechaTransaccion9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--/--/----"
+                            android:textColor="#9CA3AF"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@id/tituloTransaccion9"
+                            app:layout_constraintTop_toBottomOf="@id/tituloTransaccion9" />
+                        <!--monto-->
+                        <TextView
+                            android:id="@+id/montoTransaccion9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="$0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!--10-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTransaccion10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="#1E293B"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardTransaccion9">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp">
+                        <!--icono-->
+                        <TextView
+                            android:id="@+id/iconoTransaccion10"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@drawable/circulo_icono"
+                            android:gravity="center"
+                            android:text="☕"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <!--título-->
+                        <TextView
+                            android:id="@+id/tituloTransaccion10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Sin movimientos"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/iconoTransaccion10"
+                            app:layout_constraintTop_toTopOf="@id/iconoTransaccion10" />
+                        <!--fecha-->
+                        <TextView
+                            android:id="@+id/fechaTransaccion10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--/--/----"
+                            android:textColor="#9CA3AF"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toStartOf="@id/tituloTransaccion10"
+                            app:layout_constraintTop_toBottomOf="@id/tituloTransaccion10" />
+                        <!--monto-->
+                        <TextView
+                            android:id="@+id/montoTransaccion10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="$0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
