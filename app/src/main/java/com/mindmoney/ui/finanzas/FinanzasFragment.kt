@@ -62,6 +62,9 @@ class FinanzasFragment : Fragment() {
         val iconoTransaccion1 =
             vista.findViewById<TextView>(R.id.iconoTransaccion1)
         val cardIngresos = vista.findViewById<androidx.cardview.widget.CardView>(R.id.cardIngresos)
+        val cardGastos = vista.findViewById<androidx.cardview.widget.CardView>(R.id.cardGastos)
+
+        //Ingresos
         cardIngresos.setOnClickListener {
             val dialogView = LayoutInflater.from(requireContext())
                 .inflate(R.layout.dialog_ingreso, null)
@@ -127,6 +130,75 @@ class FinanzasFragment : Fragment() {
                 dialog.dismiss()
             }
             dialog.show()
+        }
+
+        //Gastos
+        cardGastos.setOnClickListener {
+
+            val dialogView = LayoutInflater.from(requireContext())
+                .inflate(R.layout.dialog_gasto, null)
+            val dialog = AlertDialog.Builder(requireContext())
+                .setView(dialogView)
+                .create()
+            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+            dialog.show()
+            val botonCancelar =
+                dialogView.findViewById<Button>(R.id.buttonCancelarGasto)
+            val botonGuardar =
+                dialogView.findViewById<Button>(R.id.buttonGuardarGasto)
+
+            botonCancelar.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            botonGuardar.setOnClickListener {
+
+                val titulo =
+                    dialogView.findViewById<android.widget.EditText>(R.id.editTitulo)
+                        .text.toString()
+                val cantidadTexto =
+                    dialogView.findViewById<android.widget.EditText>(R.id.editCantidad)
+                        .text.toString()
+
+                if (titulo.isBlank() || cantidadTexto.isBlank()) {
+                    android.widget.Toast.makeText(
+                        requireContext(),
+                        "Completa todos los campos",
+                        android.widget.Toast.LENGTH_SHORT
+                    ).show()
+                    return@setOnClickListener
+                }
+
+                val cantidad = cantidadTexto.toDouble()
+                val nuevaTransaccion = Transaccion(
+                    titulo = titulo,
+                    cantidad = cantidad,
+                    categoria = "Otros",
+                    esIngreso = false
+                )
+
+                listaTransacciones.add(0, nuevaTransaccion)
+                totalGastos += cantidad
+                textGastos.text = "-$${totalGastos}"
+
+                val saldoActual = totalIngresos - totalGastos
+
+                textSaldo.text = "$$saldoActual"
+                tituloTransaccion1.text = titulo
+                fechaTransaccion1.text = "Hoy"
+                montoTransaccion1.text = "-$${cantidad}"
+                montoTransaccion1.setTextColor(
+                    android.graphics.Color.parseColor("#D86367")
+                )
+
+                iconoTransaccion1.text = "📦"
+                android.widget.Toast.makeText(
+                    requireContext(),
+                    "Gasto guardado",
+                    android.widget.Toast.LENGTH_SHORT
+                ).show()
+                dialog.dismiss()
+            }
         }
         return vista
     }
