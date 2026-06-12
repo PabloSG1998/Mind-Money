@@ -63,6 +63,7 @@ class FinanzasFragment : Fragment() {
             vista.findViewById<TextView>(R.id.iconoTransaccion1)
         val cardIngresos = vista.findViewById<androidx.cardview.widget.CardView>(R.id.cardIngresos)
         val cardGastos = vista.findViewById<androidx.cardview.widget.CardView>(R.id.cardGastos)
+        val buttonReiniciar = vista.findViewById<Button>(R.id.buttonEditar)
 
         //Ingresos
         cardIngresos.setOnClickListener {
@@ -200,6 +201,52 @@ class FinanzasFragment : Fragment() {
                 dialog.dismiss()
             }
         }
+
+        buttonReiniciar.setOnClickListener {
+            val dialogView = LayoutInflater.from(requireContext())
+                .inflate(R.layout.dialog_reiniciar, null)
+
+            val dialog = AlertDialog.Builder(requireContext())
+                .setView(dialogView)
+                .create()
+            dialog.window?.setBackgroundDrawableResource(
+                android.R.color.transparent
+            )
+            dialog.show()
+            val buttonCancelar =
+                dialogView.findViewById<Button>(
+                    R.id.buttonCancelarReinicio
+                )
+            val buttonBorrar =
+                dialogView.findViewById<Button>(
+                    R.id.buttonBorrarDatos
+                )
+            buttonCancelar.setOnClickListener {
+                dialog.dismiss()
+            }
+            //Reiniciar
+            buttonBorrar.setOnClickListener {
+                listaTransacciones.clear()
+                totalIngresos = 0.0
+                totalGastos = 0.0
+
+                textIngresos.text = "$0.0"
+                textGastos.text = "$0.0"
+                textSaldo.text = "$0.0"
+                tituloTransaccion1.text = "Sin movimientos"
+                fechaTransaccion1.text = "--/--/----"
+                montoTransaccion1.text = "$0"
+                iconoTransaccion1.text = ""
+
+                Toast.makeText(
+                    requireContext(),
+                    "Datos eliminados",
+                    Toast.LENGTH_SHORT
+                ).show()
+                dialog.dismiss()
+            }
+        }
+
         return vista
     }
 
