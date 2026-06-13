@@ -47,7 +47,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="#3E4C60"
             android:ems="10"
-            android:hint="Ej: Café universidad"
+            android:hint="Ej: Almuerzo"
             android:maxLength="30"
             android:textColor="#FFFFFF"
             android:textColorHint="#9CA3AF"
