@@ -27,6 +27,7 @@ class FinanzasFragment : Fragment() {
     private val listaTransacciones = mutableListOf<Transaccion>()
     private var totalIngresos = 0.0
     private var totalGastos = 0.0
+    private var emojiSeleccionado = ""
     private var param1: String? = null
     private var param2: String? = null
 
@@ -77,6 +78,36 @@ class FinanzasFragment : Fragment() {
                 dialogView.findViewById<EditText>(R.id.editTitulo)
             val editCantidad =
                 dialogView.findViewById<EditText>(R.id.editCantidad)
+            val iconCafe =
+                dialogView.findViewById<Button>(R.id.iconCafe)
+            val iconTransporte =
+                dialogView.findViewById<Button>(R.id.iconTransporte)
+            val iconHogar =
+                dialogView.findViewById<Button>(R.id.iconHogar)
+            val iconInversion =
+                dialogView.findViewById<Button>(R.id.iconInversion)
+            val iconServicios =
+                dialogView.findViewById<Button>(R.id.iconServicios)
+            val iconOtros =
+                dialogView.findViewById<Button>(R.id.iconOtros)
+            emojiSeleccionado = ""
+            val listaBotones = listOf(
+                iconCafe,
+                iconTransporte,
+                iconHogar,
+                iconInversion,
+                iconServicios,
+                iconOtros
+            )
+            for (boton in listaBotones) {
+                boton.setOnClickListener {
+                    for (b in listaBotones) {
+                        b.alpha = 1.0f
+                    }
+                    boton.alpha = 0.5f
+                    emojiSeleccionado = boton.text.toString()
+                }
+            }
             val botonGuardar =
                 dialogView.findViewById<Button>(R.id.buttonGuardarIngreso)
             val botonCancelar =
@@ -122,7 +153,7 @@ class FinanzasFragment : Fragment() {
                     android.graphics.Color.parseColor("#00C84F")
                 )
 
-                iconoTransaccion1.text = "📈"
+                iconoTransaccion1.text = emojiSeleccionado
                 Toast.makeText(
                     requireContext(),
                     "Ingreso guardado",
@@ -138,6 +169,43 @@ class FinanzasFragment : Fragment() {
 
             val dialogView = LayoutInflater.from(requireContext())
                 .inflate(R.layout.dialog_gasto, null)
+            //Emojis
+            val iconCafe =
+                dialogView.findViewById<Button>(R.id.iconCafe)
+            val iconTransporte =
+                dialogView.findViewById<Button>(R.id.iconTransporte)
+            val iconHogar =
+                dialogView.findViewById<Button>(R.id.iconHogar)
+            val iconInversion =
+                dialogView.findViewById<Button>(R.id.iconInversion)
+            val iconServicios =
+                dialogView.findViewById<Button>(R.id.iconServicios)
+            val iconOtros =
+                dialogView.findViewById<Button>(R.id.iconOtros)
+            emojiSeleccionado = ""
+            val listaBotones = listOf(
+                iconCafe,
+                iconTransporte,
+                iconHogar,
+                iconInversion,
+                iconServicios,
+                iconOtros
+            )
+            for (boton in listaBotones) {
+
+                boton.setOnClickListener {
+
+                    for (b in listaBotones) {
+                        b.alpha = 1.0f
+                    }
+
+                    boton.alpha = 0.5f
+
+                    emojiSeleccionado =
+                        boton.text.toString()
+                }
+            }
+
             val dialog = AlertDialog.Builder(requireContext())
                 .setView(dialogView)
                 .create()
@@ -147,6 +215,7 @@ class FinanzasFragment : Fragment() {
                 dialogView.findViewById<Button>(R.id.buttonCancelarGasto)
             val botonGuardar =
                 dialogView.findViewById<Button>(R.id.buttonGuardarGasto)
+
 
             botonCancelar.setOnClickListener {
                 dialog.dismiss()
@@ -192,7 +261,7 @@ class FinanzasFragment : Fragment() {
                     android.graphics.Color.parseColor("#D86367")
                 )
 
-                iconoTransaccion1.text = "📦"
+                iconoTransaccion1.text = emojiSeleccionado
                 android.widget.Toast.makeText(
                     requireContext(),
                     "Gasto guardado",
@@ -236,6 +305,7 @@ class FinanzasFragment : Fragment() {
                 tituloTransaccion1.text = "Sin movimientos"
                 fechaTransaccion1.text = "--/--/----"
                 montoTransaccion1.text = "$0"
+                montoTransaccion1.setTextColor(android.graphics.Color.WHITE)
                 iconoTransaccion1.text = ""
 
                 Toast.makeText(
