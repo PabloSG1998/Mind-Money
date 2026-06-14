@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mindmoney.R
+import android.widget.ImageButton
+import android.widget.TextView
+import com.mindmoney.Tarea
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,6 +22,10 @@ private const val ARG_PARAM2 = "param2"
  */
 class TareasFragment : Fragment() {
     // TODO: Rename and change types of parameters
+    private lateinit var titulosTareas: List<TextView>
+    private lateinit var botonesBorrar: List<ImageButton>
+
+    private val listaTareas = mutableListOf<Tarea>()
     private var param1: String? = null
     private var param2: String? = null
 
@@ -36,6 +43,61 @@ class TareasFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tareas, container, false)
+    }
+
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
+        super.onViewCreated(
+            view,
+            savedInstanceState
+        )
+
+        titulosTareas = listOf(
+            view.findViewById(R.id.tituloTarea1),
+            view.findViewById(R.id.tituloTarea2),
+            view.findViewById(R.id.tituloTarea3),
+            view.findViewById(R.id.tituloTarea4),
+            view.findViewById(R.id.tituloTarea5),
+            view.findViewById(R.id.tituloTarea6),
+            view.findViewById(R.id.tituloTarea7),
+            view.findViewById(R.id.tituloTarea8),
+            view.findViewById(R.id.tituloTarea9),
+            view.findViewById(R.id.tituloTarea10)
+        )
+
+        botonesBorrar = listOf(
+            view.findViewById(R.id.borrarTarea1),
+            view.findViewById(R.id.borrarTarea2),
+            view.findViewById(R.id.borrarTarea3),
+            view.findViewById(R.id.borrarTarea4),
+            view.findViewById(R.id.borrarTarea5),
+            view.findViewById(R.id.borrarTarea6),
+            view.findViewById(R.id.borrarTarea7),
+            view.findViewById(R.id.borrarTarea8),
+            view.findViewById(R.id.borrarTarea9),
+            view.findViewById(R.id.borrarTarea10)
+        )
+
+        actualizarTareas()
+    }
+
+    private fun actualizarTareas() {
+
+        for (i in 0 until 10) {
+            if (i < listaTareas.size) {
+                titulosTareas[i].text =
+                    listaTareas[i].titulo
+                botonesBorrar[i].visibility =
+                    View.VISIBLE
+            } else {
+                titulosTareas[i].text =
+                    "Sin tareas pendientes"
+                botonesBorrar[i].visibility =
+                    View.INVISIBLE
+            }
+        }
     }
 
     companion object {
