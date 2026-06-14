@@ -38,6 +38,7 @@
             android:text="Finanzas"
             android:textColor="#FFFFFF"
             android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textTituloFinanzas" />
         <!--Login-->

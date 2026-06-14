@@ -25,6 +25,10 @@ private const val ARG_PARAM2 = "param2"
 class FinanzasFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private val listaTransacciones = mutableListOf<Transaccion>()
+    private lateinit var titulosTransacciones: List<TextView>
+    private lateinit var fechasTransacciones: List<TextView>
+    private lateinit var montosTransacciones: List<TextView>
+    private lateinit var iconosTransacciones: List<TextView>
     private var totalIngresos = 0.0
     private var totalGastos = 0.0
     private var emojiSeleccionado = ""
@@ -62,6 +66,55 @@ class FinanzasFragment : Fragment() {
             vista.findViewById<TextView>(R.id.montoTransaccion1)
         val iconoTransaccion1 =
             vista.findViewById<TextView>(R.id.iconoTransaccion1)
+
+        titulosTransacciones = listOf(
+            vista.findViewById(R.id.tituloTransaccion1),
+            vista.findViewById(R.id.tituloTransaccion2),
+            vista.findViewById(R.id.tituloTransaccion3),
+            vista.findViewById(R.id.tituloTransaccion4),
+            vista.findViewById(R.id.tituloTransaccion5),
+            vista.findViewById(R.id.tituloTransaccion6),
+            vista.findViewById(R.id.tituloTransaccion7),
+            vista.findViewById(R.id.tituloTransaccion8),
+            vista.findViewById(R.id.tituloTransaccion9),
+            vista.findViewById(R.id.tituloTransaccion10)
+        )
+        fechasTransacciones = listOf(
+            vista.findViewById(R.id.fechaTransaccion1),
+            vista.findViewById(R.id.fechaTransaccion2),
+            vista.findViewById(R.id.fechaTransaccion3),
+            vista.findViewById(R.id.fechaTransaccion4),
+            vista.findViewById(R.id.fechaTransaccion5),
+            vista.findViewById(R.id.fechaTransaccion6),
+            vista.findViewById(R.id.fechaTransaccion7),
+            vista.findViewById(R.id.fechaTransaccion8),
+            vista.findViewById(R.id.fechaTransaccion9),
+            vista.findViewById(R.id.fechaTransaccion10)
+        )
+        montosTransacciones = listOf(
+            vista.findViewById(R.id.montoTransaccion1),
+            vista.findViewById(R.id.montoTransaccion2),
+            vista.findViewById(R.id.montoTransaccion3),
+            vista.findViewById(R.id.montoTransaccion4),
+            vista.findViewById(R.id.montoTransaccion5),
+            vista.findViewById(R.id.montoTransaccion6),
+            vista.findViewById(R.id.montoTransaccion7),
+            vista.findViewById(R.id.montoTransaccion8),
+            vista.findViewById(R.id.montoTransaccion9),
+            vista.findViewById(R.id.montoTransaccion10)
+        )
+        iconosTransacciones = listOf(
+            vista.findViewById(R.id.iconoTransaccion1),
+            vista.findViewById(R.id.iconoTransaccion2),
+            vista.findViewById(R.id.iconoTransaccion3),
+            vista.findViewById(R.id.iconoTransaccion4),
+            vista.findViewById(R.id.iconoTransaccion5),
+            vista.findViewById(R.id.iconoTransaccion6),
+            vista.findViewById(R.id.iconoTransaccion7),
+            vista.findViewById(R.id.iconoTransaccion8),
+            vista.findViewById(R.id.iconoTransaccion9),
+            vista.findViewById(R.id.iconoTransaccion10)
+        )
         val cardIngresos = vista.findViewById<androidx.cardview.widget.CardView>(R.id.cardIngresos)
         val cardGastos = vista.findViewById<androidx.cardview.widget.CardView>(R.id.cardGastos)
         val buttonReiniciar = vista.findViewById<Button>(R.id.buttonEditar)
@@ -135,11 +188,17 @@ class FinanzasFragment : Fragment() {
                 val nuevaTransaccion = Transaccion(
                     titulo = titulo,
                     cantidad = cantidad,
-                    categoria = "📈",
+                    categoria = emojiSeleccionado,
                     esIngreso = true
                 )
 
                 listaTransacciones.add(0, nuevaTransaccion)
+                //eliminar transacción 11
+                if (listaTransacciones.size > 10) {
+                    listaTransacciones.removeAt(10)
+                }
+                actualizarHistorial()
+
                 totalIngresos += cantidad
                 textIngresos.text = "+$${totalIngresos}"
 
@@ -192,15 +251,11 @@ class FinanzasFragment : Fragment() {
                 iconOtros
             )
             for (boton in listaBotones) {
-
                 boton.setOnClickListener {
-
                     for (b in listaBotones) {
                         b.alpha = 1.0f
                     }
-
                     boton.alpha = 0.5f
-
                     emojiSeleccionado =
                         boton.text.toString()
                 }
@@ -220,9 +275,7 @@ class FinanzasFragment : Fragment() {
             botonCancelar.setOnClickListener {
                 dialog.dismiss()
             }
-
             botonGuardar.setOnClickListener {
-
                 val titulo =
                     dialogView.findViewById<android.widget.EditText>(R.id.editTitulo)
                         .text.toString()
@@ -243,11 +296,17 @@ class FinanzasFragment : Fragment() {
                 val nuevaTransaccion = Transaccion(
                     titulo = titulo,
                     cantidad = cantidad,
-                    categoria = "Otros",
+                    categoria = emojiSeleccionado,
                     esIngreso = false
                 )
 
                 listaTransacciones.add(0, nuevaTransaccion)
+                //Borrar transacción 11
+                if (listaTransacciones.size > 10) {
+                    listaTransacciones.removeAt(10)
+                }
+                actualizarHistorial()
+
                 totalGastos += cantidad
                 textGastos.text = "-$${totalGastos}"
 
@@ -302,11 +361,7 @@ class FinanzasFragment : Fragment() {
                 textIngresos.text = "$0.0"
                 textGastos.text = "$0.0"
                 textSaldo.text = "$0.0"
-                tituloTransaccion1.text = "Sin movimientos"
-                fechaTransaccion1.text = "--/--/----"
-                montoTransaccion1.text = "$0"
-                montoTransaccion1.setTextColor(android.graphics.Color.WHITE)
-                iconoTransaccion1.text = ""
+                actualizarHistorial()
 
                 Toast.makeText(
                     requireContext(),
@@ -318,6 +373,45 @@ class FinanzasFragment : Fragment() {
         }
 
         return vista
+    }
+
+    private fun actualizarHistorial() {
+        for (i in 0 until 10) {
+            if (i < listaTransacciones.size) {
+                val transaccion = listaTransacciones[i]
+                titulosTransacciones[i].text =
+                    transaccion.titulo
+                fechasTransacciones[i].text =
+                    "Hoy"
+                if (transaccion.esIngreso) {
+                    montosTransacciones[i].text =
+                        "+$${transaccion.cantidad}"
+                    montosTransacciones[i].setTextColor(
+                        android.graphics.Color.parseColor("#00C84F")
+                    )
+                } else {
+                    montosTransacciones[i].text =
+                        "-$${transaccion.cantidad}"
+
+                    montosTransacciones[i].setTextColor(
+                        android.graphics.Color.parseColor("#D86367")
+                    )
+                }
+                iconosTransacciones[i].text =
+                    transaccion.categoria
+            } else {
+                titulosTransacciones[i].text =
+                    "Sin movimientos"
+                fechasTransacciones[i].text =
+                    "--/--/----"
+                montosTransacciones[i].text =
+                    "$0"
+                montosTransacciones[i].setTextColor(
+                    android.graphics.Color.WHITE
+                )
+                iconosTransacciones[i].text = ""
+            }
+        }
     }
 
     companion object {
