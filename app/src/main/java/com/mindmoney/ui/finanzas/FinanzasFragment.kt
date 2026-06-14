@@ -32,6 +32,8 @@ class FinanzasFragment : Fragment() {
     private var totalIngresos = 0.0
     private var totalGastos = 0.0
     private var emojiSeleccionado = ""
+    //Guardar info
+    private val PREFS = "MindMoneyPrefs"
     private var param1: String? = null
     private var param2: String? = null
 
@@ -115,6 +117,13 @@ class FinanzasFragment : Fragment() {
             vista.findViewById(R.id.iconoTransaccion9),
             vista.findViewById(R.id.iconoTransaccion10)
         )
+        //Cargar datos, historial
+        cargarDatos()
+        textIngresos.text = "+$${totalIngresos}"
+        textGastos.text = "-$${totalGastos}"
+        textSaldo.text = "$${totalIngresos - totalGastos}"
+        actualizarHistorial()
+
         val cardIngresos = vista.findViewById<androidx.cardview.widget.CardView>(R.id.cardIngresos)
         val cardGastos = vista.findViewById<androidx.cardview.widget.CardView>(R.id.cardGastos)
         val buttonReiniciar = vista.findViewById<Button>(R.id.buttonEditar)
@@ -197,9 +206,11 @@ class FinanzasFragment : Fragment() {
                 if (listaTransacciones.size > 10) {
                     listaTransacciones.removeAt(10)
                 }
-                actualizarHistorial()
 
                 totalIngresos += cantidad
+                actualizarHistorial()
+                guardarDatos()
+
                 textIngresos.text = "+$${totalIngresos}"
 
                 val saldoActual = totalIngresos - totalGastos
@@ -305,9 +316,11 @@ class FinanzasFragment : Fragment() {
                 if (listaTransacciones.size > 10) {
                     listaTransacciones.removeAt(10)
                 }
-                actualizarHistorial()
 
                 totalGastos += cantidad
+                actualizarHistorial()
+                guardarDatos()
+
                 textGastos.text = "-$${totalGastos}"
 
                 val saldoActual = totalIngresos - totalGastos
@@ -362,6 +375,7 @@ class FinanzasFragment : Fragment() {
                 textGastos.text = "$0.0"
                 textSaldo.text = "$0.0"
                 actualizarHistorial()
+                guardarDatos()
 
                 Toast.makeText(
                     requireContext(),
@@ -410,6 +424,77 @@ class FinanzasFragment : Fragment() {
                     android.graphics.Color.WHITE
                 )
                 iconosTransacciones[i].text = ""
+            }
+        }
+    }
+    //Guardar historial
+    private fun guardarDatos() {
+        val prefs = requireContext()
+            .getSharedPreferences(PREFS, android.content.Context.MODE_PRIVATE)
+        val editor = prefs.edit()
+
+        editor.putFloat(
+            "totalIngresos",
+            totalIngresos.toFloat()
+        )
+        editor.putFloat(
+            "totalGastos",
+            totalGastos.toFloat()
+        )
+
+        val historialTexto =
+            listaTransacciones.joinToString("|||") {
+
+                "${it.titulo}###${it.cantidad}###${it.categoria}###${it.esIngreso}"
+            }
+
+        editor.putString(
+            "historial",
+            historialTexto
+        )
+        editor.apply()
+    }
+
+    //Cargar historial
+    private fun cargarDatos() {
+
+        val prefs = requireContext()
+            .getSharedPreferences(PREFS, android.content.Context.MODE_PRIVATE)
+
+        totalIngresos =
+            prefs.getFloat(
+                "totalIngresos",
+                0f
+            ).toDouble()
+        totalGastos =
+            prefs.getFloat(
+                "totalGastos",
+                0f
+            ).toDouble()
+
+        listaTransacciones.clear()
+
+        val historialTexto =
+            prefs.getString(
+                "historial",
+                ""
+            ) ?: ""
+        if (historialTexto.isNotEmpty()) {
+            val registros =
+                historialTexto.split("|||")
+            for (registro in registros) {
+                val partes =
+                    registro.split("###")
+                if (partes.size == 4) {
+                    listaTransacciones.add(
+                        Transaccion(
+                            titulo = partes[0],
+                            cantidad = partes[1].toDouble(),
+                            categoria = partes[2],
+                            esIngreso = partes[3].toBoolean()
+                        )
+                    )
+                }
             }
         }
     }

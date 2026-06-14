@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mindmoney.R
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,11 +32,37 @@ class InicioFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inicio, container, false)
+    ): View {
+
+        val view = inflater.inflate(
+            R.layout.fragment_inicio,
+            container,
+            false
+        )
+        val textSaldo =
+            view.findViewById<TextView>(R.id.textSaldo)
+        val sharedPreferences =
+            requireContext().getSharedPreferences(
+                "MindMoneyPrefs",
+                android.content.Context.MODE_PRIVATE
+            )
+        val ingresos =
+            sharedPreferences.getFloat(
+                "totalIngresos",
+                0f
+            ).toDouble()
+        val gastos =
+            sharedPreferences.getFloat(
+                "totalGastos",
+                0f
+            ).toDouble()
+        val saldo = ingresos - gastos
+        textSaldo.text = "$$saldo"
+
+        return view
     }
 
     companion object {
