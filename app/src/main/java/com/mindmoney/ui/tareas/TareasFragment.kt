@@ -24,6 +24,10 @@ class TareasFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var titulosTareas: List<TextView>
     private lateinit var botonesBorrar: List<ImageButton>
+    private lateinit var editTituloTarea: android.widget.EditText
+    private lateinit var editDescripcionTarea: android.widget.EditText
+    private lateinit var buttonAgregarTarea: android.widget.Button
+    private lateinit var textContadorTareas: TextView
 
     private val listaTareas = mutableListOf<Tarea>()
     private var param1: String? = null
@@ -78,9 +82,55 @@ class TareasFragment : Fragment() {
             view.findViewById(R.id.borrarTarea8),
             view.findViewById(R.id.borrarTarea9),
             view.findViewById(R.id.borrarTarea10)
+
         )
+        editTituloTarea =
+            view.findViewById(R.id.editTituloTarea)
+        editDescripcionTarea =
+            view.findViewById(R.id.editDescripcionTarea)
+        buttonAgregarTarea =
+            view.findViewById(R.id.buttonAgregarTarea)
+        textContadorTareas =
+            view.findViewById(R.id.textContadorTareas)
 
         actualizarTareas()
+        buttonAgregarTarea.setOnClickListener {
+            val titulo =
+                editTituloTarea.text.toString().trim()
+            val descripcion =
+                editDescripcionTarea.text.toString().trim()
+
+            if (titulo.isEmpty() || descripcion.isEmpty()) {
+                android.widget.Toast.makeText(
+                    requireContext(),
+                    "Completa todos los campos",
+                    android.widget.Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
+
+            if (listaTareas.size >= 10) {
+
+                android.widget.Toast.makeText(
+                    requireContext(),
+                    "Máximo 10 tareas",
+                    android.widget.Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
+
+            listaTareas.add(
+                Tarea(
+                    titulo,
+                    descripcion
+                )
+            )
+
+            editTituloTarea.setText("")
+            editDescripcionTarea.setText("")
+
+            actualizarTareas()
+        }
     }
 
     private fun actualizarTareas() {
@@ -95,9 +145,12 @@ class TareasFragment : Fragment() {
                 titulosTareas[i].text =
                     "Sin tareas pendientes"
                 botonesBorrar[i].visibility =
-                    View.INVISIBLE
+                    View.GONE
             }
         }
+
+        textContadorTareas.text =
+            "Agregar nueva tarea (${listaTareas.size}/10)"
     }
 
     companion object {
