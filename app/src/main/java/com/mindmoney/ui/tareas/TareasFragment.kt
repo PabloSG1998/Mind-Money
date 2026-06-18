@@ -28,7 +28,7 @@ class TareasFragment : Fragment() {
     private lateinit var editDescripcionTarea: android.widget.EditText
     private lateinit var buttonAgregarTarea: android.widget.Button
     private lateinit var textContadorTareas: TextView
-
+    private lateinit var cardsTareas: List<androidx.cardview.widget.CardView>
     private val listaTareas = mutableListOf<Tarea>()
     private var param1: String? = null
     private var param2: String? = null
@@ -82,8 +82,21 @@ class TareasFragment : Fragment() {
             view.findViewById(R.id.borrarTarea8),
             view.findViewById(R.id.borrarTarea9),
             view.findViewById(R.id.borrarTarea10)
-
         )
+
+        cardsTareas = listOf(
+            view.findViewById(R.id.cardTarea1),
+            view.findViewById(R.id.cardTarea2),
+            view.findViewById(R.id.cardTarea3),
+            view.findViewById(R.id.cardTarea4),
+            view.findViewById(R.id.cardTarea5),
+            view.findViewById(R.id.cardTarea6),
+            view.findViewById(R.id.cardTarea7),
+            view.findViewById(R.id.cardTarea8),
+            view.findViewById(R.id.cardTarea9),
+            view.findViewById(R.id.cardTarea10)
+        )
+
         editTituloTarea =
             view.findViewById(R.id.editTituloTarea)
         editDescripcionTarea =
@@ -93,6 +106,36 @@ class TareasFragment : Fragment() {
         textContadorTareas =
             view.findViewById(R.id.textContadorTareas)
 
+        for (i in botonesBorrar.indices) {
+            botonesBorrar[i].setOnClickListener {
+                if (i < listaTareas.size) {
+                    androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                        .setTitle("Eliminar tarea")
+                        .setMessage("¿Deseas eliminar esta tarea?")
+                        .setPositiveButton("Eliminar") { _, _ ->
+                            listaTareas.removeAt(i)
+                            guardarTareas()
+                            actualizarTareas()
+                        }
+                        .setNegativeButton("Cancelar", null)
+                        .show()
+                }
+            }
+        }
+
+        for (i in cardsTareas.indices) {
+            cardsTareas[i].setOnClickListener {
+                if (i < listaTareas.size) {
+                    androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                        .setTitle(listaTareas[i].titulo)
+                        .setMessage(listaTareas[i].descripcion)
+                        .setPositiveButton("Cerrar", null)
+                        .show()
+                }
+            }
+        }
+
+        cargarTareas()
         actualizarTareas()
         buttonAgregarTarea.setOnClickListener {
             val titulo =
@@ -110,7 +153,6 @@ class TareasFragment : Fragment() {
             }
 
             if (listaTareas.size >= 10) {
-
                 android.widget.Toast.makeText(
                     requireContext(),
                     "Máximo 10 tareas",
@@ -120,11 +162,13 @@ class TareasFragment : Fragment() {
             }
 
             listaTareas.add(
+                0,
                 Tarea(
                     titulo,
                     descripcion
                 )
             )
+            guardarTareas()
 
             editTituloTarea.setText("")
             editDescripcionTarea.setText("")
@@ -151,6 +195,54 @@ class TareasFragment : Fragment() {
 
         textContadorTareas.text =
             "Agregar nueva tarea (${listaTareas.size}/10)"
+    }
+
+    private fun guardarTareas() {
+        val prefs = requireContext()
+            .getSharedPreferences(
+                "MindMoneyPrefs",
+                android.content.Context.MODE_PRIVATE
+            )
+        val editor = prefs.edit()
+        val texto =
+            listaTareas.joinToString("|||") {
+                "${it.titulo}###${it.descripcion}"
+            }
+        editor.putString(
+            "tareas",
+            texto
+        )
+        editor.apply()
+    }
+
+    private fun cargarTareas() {
+        val prefs = requireContext()
+            .getSharedPreferences(
+                "MindMoneyPrefs",
+                android.content.Context.MODE_PRIVATE
+            )
+        val texto =
+            prefs.getString(
+                "tareas",
+                ""
+            ) ?: ""
+        listaTareas.clear()
+        if (texto.isNotEmpty()) {
+            val registros =
+                texto.split("|||")
+            for (registro in registros) {
+                val partes =
+                    registro.split("###")
+                if (partes.size == 2) {
+                    listaTareas.add(
+                        Tarea(
+                            partes[0],
+                            partes[1]
+                        )
+                    )
+                }
+            }
+        }
     }
 
     companion object {
