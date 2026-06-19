@@ -129,7 +129,7 @@
                         android:paddingTop="4dp"
                         android:paddingEnd="10dp"
                         android:paddingBottom="4dp"
-                        android:text="+12.5%"
+                        android:text="Ingresa a Finanzas"
                         android:textColor="#25C86F"
                         android:textSize="12sp"
                         android:textStyle="bold" />
@@ -141,7 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="vs. mes anterior"
+                    android:text="para configurar tu saldo"
                     android:textColor="#D1D5DB"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@id/cardPorcentaje"
@@ -193,30 +193,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textProgreso"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Progreso"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textResumen" />
-
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="0dp"
-                    android:layout_height="10dp"
-                    android:layout_marginTop="8dp"
-                    android:max="100"
-                    android:progress="50"
-                    android:progressTint="#3689FF"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textProgreso" />
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/task1"
                     android:layout_width="0dp"
@@ -226,7 +202,7 @@
                     app:cardCornerRadius="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/progressBar">
+                    app:layout_constraintTop_toBottomOf="@id/textResumen">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -236,13 +212,19 @@
                         android:orientation="horizontal"
                         android:paddingStart="12dp">
 
-                        <CheckBox
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="➜"
+                            android:textColor="#00C84F"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/textTareaInicio1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10sp"
                             android:text="Estudiar Android"
                             android:textColor="#FFFFFF"
                             android:textSize="14sp" />
@@ -269,13 +251,19 @@
                         android:orientation="horizontal"
                         android:paddingStart="12dp">
 
-                        <CheckBox
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="➜"
+                            android:textColor="#00C84F"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/textTareaInicio2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10sp"
                             android:text="Diseñar interfaz"
                             android:textColor="#FFFFFF"
                             android:textSize="14sp" />
@@ -302,13 +290,19 @@
                         android:orientation="horizontal"
                         android:paddingStart="12dp">
 
-                        <CheckBox
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="➜"
+                            android:textColor="#00C84F"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/textTareaInicio3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10sp"
                             android:text="Agregar tareas"
                             android:textColor="#FFFFFF"
                             android:textSize="14sp" />

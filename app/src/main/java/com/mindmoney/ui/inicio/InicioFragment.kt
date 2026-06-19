@@ -44,6 +44,14 @@ class InicioFragment : Fragment() {
         )
         val textSaldo =
             view.findViewById<TextView>(R.id.textSaldo)
+        val textTareaInicio1 =
+            view.findViewById<TextView>(R.id.textTareaInicio1)
+        val textTareaInicio2 =
+            view.findViewById<TextView>(R.id.textTareaInicio2)
+        val textTareaInicio3 =
+            view.findViewById<TextView>(R.id.textTareaInicio3)
+        val textPendientes =
+            view.findViewById<TextView>(R.id.textPendientes)
         val sharedPreferences =
             requireContext().getSharedPreferences(
                 "MindMoneyPrefs",
@@ -61,6 +69,47 @@ class InicioFragment : Fragment() {
             ).toDouble()
         val saldo = ingresos - gastos
         textSaldo.text = "$$saldo"
+        val textoTareas =
+            sharedPreferences.getString(
+                "tareas",
+                ""
+            ) ?: ""
+
+        if (textoTareas.isNotEmpty()) {
+            val registros =
+                textoTareas.split("|||")
+            val tareas =
+                registros.mapNotNull {
+
+                    val partes =
+                        it.split("###")
+
+                    if (partes.size == 2)
+                        partes[0]
+                    else
+                        null
+                }
+            textTareaInicio1.text =
+                tareas.getOrNull(0)
+                    ?: "Sin tareas"
+            textTareaInicio2.text =
+                tareas.getOrNull(1)
+                    ?: "Sin tareas"
+            textTareaInicio3.text =
+                tareas.getOrNull(2)
+                    ?: "Sin tareas"
+            textPendientes.text =
+                "${tareas.size} tareas pendientes"
+        } else {
+            textTareaInicio1.text =
+                "Sin tareas"
+            textTareaInicio2.text =
+                "Sin tareas"
+            textTareaInicio3.text =
+                "Sin tareas"
+            textPendientes.text =
+                "0 tareas pendientes"
+        }
 
         return view
     }
