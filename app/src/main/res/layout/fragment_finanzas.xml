@@ -43,7 +43,7 @@
             app:layout_constraintTop_toBottomOf="@id/textTituloFinanzas" />
         <!--Login-->
         <Button
-            android:id="@+id/buttonLoginFinanzas"
+            android:id="@+id/login"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="50dp"
@@ -149,7 +149,7 @@
                         android:paddingTop="4dp"
                         android:paddingEnd="10dp"
                         android:paddingBottom="4dp"
-                        android:text="+12.5%"
+                        android:text="Usa los botones"
                         android:textColor="#25C86F"
                         android:textSize="12sp"
                         android:textStyle="bold" />
@@ -161,7 +161,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="vs. mes anterior"
+                    android:text="Para tus movimientos"
                     android:textColor="#D1D5DB"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@id/cardPorcentajeFinanzas"

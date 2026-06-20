@@ -25,6 +25,8 @@ class MensajesFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var textMensajeAdminMensajes: TextView
+    private lateinit var textFechaActualizacion: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,9 +48,16 @@ class MensajesFragment : Fragment() {
         )
         val botonLogin =
             view.findViewById<Button>(R.id.login)
+
+        textMensajeAdminMensajes =
+            view.findViewById(R.id.textMensajeAdminMensajes)
+        textFechaActualizacion =
+            view.findViewById(R.id.textFechaActualizacion)
+
         botonLogin.setOnClickListener {
             mostrarLoginAdmin()
         }
+        cargarMensajeAdmin()
         return view
     }
 
@@ -142,13 +151,23 @@ class MensajesFragment : Fragment() {
                 "MindMoneyPrefs",
                 android.content.Context.MODE_PRIVATE
             )
-        val fecha =
+        val formatoFecha =
             java.text.SimpleDateFormat(
                 "dd/MM/yy",
                 java.util.Locale.getDefault()
-            ).format(
+            )
+        formatoFecha.timeZone =
+            java.util.TimeZone.getDefault()
+        val fecha =
+            formatoFecha.format(
                 java.util.Date()
             )
+
+        android.util.Log.d(
+            "FECHA_DEBUG",
+            fecha
+        )
+
         prefs.edit()
             .putString(
                 "mensajeAdmin",
@@ -159,11 +178,39 @@ class MensajesFragment : Fragment() {
                 fecha
             )
             .apply()
+
+        textMensajeAdminMensajes.text =
+            mensaje
+        textFechaActualizacion.text =
+            "Actualizado: $fecha"
         android.widget.Toast.makeText(
             requireContext(),
             "Mensaje publicado",
             android.widget.Toast.LENGTH_SHORT
         ).show()
+    }
+
+    private fun cargarMensajeAdmin() {
+        val prefs =
+            requireContext().getSharedPreferences(
+                "MindMoneyPrefs",
+                android.content.Context.MODE_PRIVATE
+            )
+        val mensaje =
+            prefs.getString(
+                "mensajeAdmin",
+                "Recuerda registrar tus gastos diarios para mantener un mejor control financiero."
+            )
+        val fecha =
+            prefs.getString(
+                "fechaMensajeAdmin",
+                "--/--/--"
+            )
+
+        textMensajeAdminMensajes.text =
+            mensaje
+        textFechaActualizacion.text =
+            "Actualizado: $fecha"
     }
 
     companion object {
