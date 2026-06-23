@@ -29,3 +29,7 @@ La aplicación se desarrollará exclusivamente para la plataforma Android. Se ut
 *    El botón de Iniciar Sesión lo usé para agegar el mensaje del Admin, el cual aún no conecto a firebase para que se actualice a los usuarios.
 *    En lugar de una interfaz de administrador remota, usé un panel local oculto mediante login.
 *    Todo el proyecto se desarrolló en Kotlin,
+
+## QR
+<img width="782" height="782" alt="MindMoney QR APK" src="https://github.com/user-attachments/assets/6a683609-a91c-4901-bede-b7c59e8add92" />
+
