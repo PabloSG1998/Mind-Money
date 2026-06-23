@@ -25,7 +25,7 @@ La aplicación se desarrollará exclusivamente para la plataforma Android. Se ut
 
 ## Registro de Cambios (Changeload)
 
-### Añadido (Added):
-*   **Pantalla de registro de Ingresos o Gastos:** Nueva interfaz de pantalla reducida que permite al usuario registrar movimientos monetarios de forma más ágil e intuitiva.
-*   **Pantalla de Inicio de Sesión:** Implementada para gestionar el acceso. El objetivo principal es permitir la entrada a un área de administrador, desde donde se podrá configurar y enviar un mensaje personalizado al resto de los usuarios.
-*   **Pantalla de Administrador (Admin):** Se implementará un panel completo con diversas actividades de gestión (pendientes de definir según avance del proyecto).
+*    Por la falta de tiempo, no incluí la sección de Cápsula de tiempo.
+*    El botón de Iniciar Sesión lo usé para agegar el mensaje del Admin, el cual aún no conecto a firebase para que se actualice a los usuarios.
+*    En lugar de una interfaz de administrador remota, usé un panel local oculto mediante login.
+*    Todo el proyecto se desarrolló en Kotlin,
