@@ -31,5 +31,5 @@ La aplicación se desarrollará exclusivamente para la plataforma Android. Se ut
 *    Todo el proyecto se desarrolló en Kotlin.
 
 ## QR
-<img width="782" height="782" alt="MindMoney QR APK" src="https://github.com/user-attachments/assets/6a683609-a91c-4901-bede-b7c59e8add92" />
+<img width="391" height="391" alt="MindMoney QR APK" src="https://github.com/user-attachments/assets/6a683609-a91c-4901-bede-b7c59e8add92" />
 
